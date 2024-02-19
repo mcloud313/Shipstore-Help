@@ -1,0 +1,115 @@
+/* General styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #4e4f51;
+    background-color: #f1f1f1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin: 1rem 0;
+    font-weight: normal;
+  }
+  
+  p, ul, li {
+    margin: 0.5rem 0;
+  }
+  
+  img {
+    width: 100%;
+    max-width: 600px;
+    margin: 1rem 0;
+  }
+  
+  a {
+    color: #4582c3;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Header and navigation */
+  header {
+    background-color: #4582c3;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  
+  .nav {
+    width: 200px;
+    background-color: #fff;
+    border-right: 1px solid #eee;
+  }
+
+  .nav-content {
+    display: none;
+  }
+
+  .nav-content.active {
+    display: block;
+  }
+
+  .js-toggle {
+    /* Your styles for the toggle button */
+  }
+  
+  .nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .nav li {
+    margin: 0.5rem 0;
+  }
+  
+  .nav a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #4e4f51;
+  }
+  
+  .nav a:hover {
+    background-color: #f8f8f8;
+  }
+  
+  /* Main content and aside */
+  main {
+    display: flex;
+    padding: 1rem;
+  }
+  
+  .content {
+    flex: 1;
+  }
+  
+  .sticky {
+    width: 200px;
+    margin-left: 1rem;
+    position: sticky;
+    top: 60px;
+  }
+  
+  .sticky h2 {
+    background-color: #f8f8f8;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+  }
+  
+  .sticky ul {
+    list-style: none;
+    padding: 1rem;
+  }
+  
+  .sticky li {
+    margin: 0.5rem 0;
+  }
+  
+  /* Responsive behavior */
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
