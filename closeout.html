@@ -22,11 +22,9 @@
   </header>
   <main>
     <div class="content">
-      <h1>End Of Day</h1>
-      <p>End of Day is a process ran at the profile level. This functionality is normally used to generate a manifest for a certain carrier. </p>
-      <h2>End Of Day Already Running</h2>
-      <p>If a client gets "End of Day Already Running" it's because the process has gotten stuck and the flag for their profile is stuck to 1. The field is called EODRunning in the database under the Profiles table. If we reset that back to 0 this will resolve the issue.</p>
-      
+      <h1>Closeouts</h1>
+      <h2>No Manifest Output</h2>
+      <p>We have run into the issue before where the client was using a web service for multiple carriers. When attempting to closeout they were not getting an error but were also not getting their manifest. This was due to the web service (EasyPost) being used for FedEx and USPS shipments.</p>
       </div>
     <aside class="sticky">
       <h2>Related Links</h2>
