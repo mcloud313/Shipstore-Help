@@ -32,8 +32,25 @@
         <p>Once we have this information we can search the server logs for the shipment using the order number and when it was attempted. Most shipments go through common stages within the logs that can make the information easy to find. Shipments normally start with a LoadShipmen if coming from an integration. The next step normally clients take is to rate the shipment which creates a RateShipment thread in the logs. After this is normally a good time to grab the shipment JSON. You will know you are at the right spot if the ship JSON you are grabbing is after the Rateshipment and the first few values are not empty <emp>(They have information for most of the keys in the JSON.)</emp>. You'll want to grab the entire JSON object from { to it's matching }.</p>
         <p><strong>NOTE: If the issue is occuring on ShipmentLoad, the information gathered will not have populated fields in the JSON other than maybe an order number and profile being used. </strong></p>
         <h2>Loading/Saving</h2>
-        <p>If the issue is happening on load or saving the shipment back to the client's integration take the following steps. First check the Shipping history screen to see if the shipment has already been processed, this could be the cause of the error.</p>
-      </div>
+        <p>If the issue is happening on load or saving the shipment back to the client's integration take the following steps. First check the Shipping history screen to see if the shipment has already been processed, this could be the cause of the error. Our next step should be to inspect the integration being used. You can do this by going to Administration > Integrations. Then opening up the integrations by selecting the edit button. We can then tell if the client is using the merchant app to load and save shipments to and from Shipstore.</p>
+        <img class="screenshot" src="screenshots/integration.jpg" alt="Example of an Integration">
+        <p>If the integration uses the Merchant app as the example above we need to request the merchant logs from the client to fully investigate. The Merchant logs are found at: 'C:\Logs\SHIPSTOREv4\Merchant'. If they are not utilizing the Merchant app then we will need to look into the server logs for more information as to what could be going wrong on shipment load or save.</p>
+      
+        <h2>Rating</h2>
+        <p>If the issue is happening when attempting to rate a shipment we'll need the following information.</p>
+        <ul>
+            <li>Shipment Type: Parcel or LTL</li>
+            <li>Ship To: Domestic or International</li>
+            <li>Ship To: PO Box or an APO/FPO address</li>
+            <li>Number of packages</li>
+            <li>What carrier generates what error?</li>
+            <li>What's the Ship Date?</li>
+            <li>Is the shipper selecting any accessorials? <em>(Saturday delivery, proof of delivery etc.)</em></li>
+        </ul>
+        <p>Once that information is gathered we will also need the request and response attached to the ticket. These come at the end of the RateShipment if this is a Rateshop there will be a large quantity of these. The request is sent from us to the carrier and is normally in an XML format. The response comes back from the carrier and can be either in XML or JSON. If there is an error in the rating of a shipment it's normally contained in the response. </p>
+        <h2>Batch Processing</h2>
+        <p>For issues with batch processing we will need the title of the Batch and the profile it is being attempted under. An important thing to remember for batch processing is if the customer with an issue is a private cloud customer or a public cloud customer or enterprise. The batch processing service resides on our cloud environment for public and private customers. One of the first things to attempt if running into issues is to reset the batch processing service within the cloud server. </p>
+    </div>
     <aside class="sticky">
       <h2>Related Links</h2>
       <ul>
