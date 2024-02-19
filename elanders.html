@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Reference</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav class="nav collapsible">
+        <button class="js-toggle">Menu</button>
+      <ul class="nav-content">
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="clients.html">Clients</a></li>
+        <li><a href="endofday.html">End of Day</a></li>
+        </ul>
+    </nav>
+    <a href="index.html"><img src="images/logo.png" id="logo"></a>
+  </header>
+  <main>
+    <div class="content">
+      <h1>Support Reference</h1>
+    
+      <p>Elanders Americas is a commercial printer based out of Davenport, Iowa.</p>
+      <h2>Customization</h2>
+      <h3>Batch Processing</h3>
+      <p>In Elanders solution, we have modified the batch process to run directly out of Veracore, using the "Wave PPU" as the batch key.Because of this, the following steps must be taken to diagnose/test the process. You must be signed in as one of their users, and be linked to one of the stations from their list.</p>
+
+      <p>The standard batch process runs similar to the normal process, in which they select a batch key, enter some default parameters, and press Process. Once the process starts, the system will pull in a list of package IDs (order numbers) from Veracore based on the selected wave PPU, and process them through one by one.</p>
+
+      <p>Depending on if you had the Batch PDF option selected on the process screen, the system will either print each label as it is processed (not checked), or will consolidate the labels into 1 PDF file for the user to print (if checked).</p>
+
+      <p>Once the shipping side of things is complete, the system will then send a set of update/insert commands to Veracore to close the packages. This is done in groups of 50 as a batch insert for speed. The Update Veracore by Wave feature performs this same process by itself. The Reprint batch feature will either open the existing PDF (if on the server), or will recreate the PDF, and send any necessary labels to the printer. Batches are typically pre-printed before packing starts.</p>
+      <h3>Rateshops</h3>  
+      <p>In Elanders solution, most/all rateshops do not actually shop for rates. Instead, they are essentially business rules that vary from client to client (use OMS ID/udf1 as identifier). They refer to this as their "Ground Best Way logic". If Elanders ever requests to update this logic follow the steps below.</p> 
+      
+      <ol>
+        <li>Save the updated files they send you to our ARE-Clients folder @ \Elanders Americas\GRDBW. The files need to match the formats of the other Excel files found in this folder.</li>
+        <li>Once saved, run the Elanders.RateFileBuilder.exe file found at E:\Projects\SHIPSTORE\v3\ShipStore Enterprise\Elanders\Extra Utilities\RateAndZoneFileBuilder\bin\Debug. <em>(If you don't see the file, you'll need to build the solution.)</em></li>
+        <li>Once the app is open, click the "GRDBW Routing File" tab.</li>
+        <li>In the top box, Select one of the files saved in step 1.</li>
+        <li>In the bottom box, select the matching .JS file from the same folder in the above step (i.e. Ounce tables = LW, Pound tables = GRDBW)</li>
+        <li>Click Generate once the 2 file paths are entered.</li>
+        <li>Repeat steps 4-6 for each files (should be 2 max)</li>
+        <li>Once the files are generated, open the Elanders ShipStore Website solution found at E:\Projects\SHIPSTORE\v4\ShipStore Enterprise\Elanders\ShipStore Website</li>
+        <li>Copy/Paste the updated .JS files generated above to the Resources folder of the website project</li>
+        <li>Rebuild, then publish to production servers</li>
+      </ol>
+      
+
+      </div>
+    <aside class="sticky">
+      <h2>Related Links</h2>
+      <ul>
+        <li><a href="#">Related Article 1</a></li>
+        <li><a href="#">Related Article 2</a></li>
+        <li><a href="#">Downloadable Resource</a></li>
+        </ul>
+    </aside>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
