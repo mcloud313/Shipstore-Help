@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Reference - FAQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav class="nav collapsible">
+        <button class="js-toggle">Menu</button>
+      <ul class="nav-content">
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="#">Clients</a></li>
+        </ul>
+    </nav>
+    <a href="index.html"><img src="images/logo.png" id="logo"></a>
+  </header>
+  <main>
+    <div class="content">
+      <h1>FAQ</h1>
+      <p>Calls to the service desk should be answered prompty and by the third ring if possible. Inform them they've reached Shipstore software and give your name on answering the call. The first piece of information we need is whom we are speaking to and the organization they are part of. From there we can go to their page and see recurring issues. We can also then find tickets in Teamwork Desk for said client that are similar in nature. The next piece of information we'll need is what issue they are currently having. See below for further help with common issues.</p>
+      <h2>Shipping Issues</h2>
+        <p>If the customer is calling in about an issue when trying to load or process a shipment we'll need the following information.</p>
+        <ul>
+            <li>Order Number</li>
+            <li>Shipment attempt timestamp</li>
+            <li>Profile the Shipment is attempting</li>
+            <li>When the issue event is happening? <em>(Loading, Rating, Shipping, Consolidating etc.)</em></li>
+        </ul>
+        <p>Once we have this information we can search the server logs for the shipment using the order number and when it was attempted. Most shipments go through common stages within the logs that can make the information easy to find. Shipments normally start with a LoadShipmen if coming from an integration. The next step normally clients take is to rate the shipment which creates a RateShipment thread in the logs. After this is normally a good time to grab the shipment JSON. You will know you are at the right spot if the ship JSON you are grabbing is after the Rateshipment and the first few values are not empty <emp>(They have information for most of the keys in the JSON.)</emp>. You'll want to grab the entire JSON object from { to it's matching }.</p>
+        <p><strong>NOTE: If the issue is occuring on ShipmentLoad, the information gathered will not have populated fields in the JSON other than maybe an order number and profile being used. </strong></p>
+        <h2>Loading/Saving</h2>
+        <p>If the issue is happening on load or saving the shipment back to the client's integration take the following steps. First check the Shipping history screen to see if the shipment has already been processed, this could be the cause of the error.</p>
+      </div>
+    <aside class="sticky">
+      <h2>Related Links</h2>
+      <ul>
+        <li><a href="#">Related Article 1</a></li>
+        <li><a href="#">Related Article 2</a></li>
+        <li><a href="#">Downloadable Resource</a></li>
+        </ul>
+    </aside>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
