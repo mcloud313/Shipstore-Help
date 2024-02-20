@@ -59,6 +59,8 @@ body {
 
   .nav-content.active {
     display: block;
+    position: absolute;
+    background-color: white;
   }
 
   .js-toggle {
