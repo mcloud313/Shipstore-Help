@@ -59,7 +59,8 @@
             <li>What's the Ship Date?</li>
             <li>Is the shipper selecting any accessorials? <em>(Saturday delivery, proof of delivery etc.)</em></li>
         </ul>
-        <p>Once that information is gathered we will also need the request and response attached to the ticket. These come at the end of the RateShipment if this is a Rateshop there will be a large quantity of these. The request is sent from us to the carrier and is normally in an XML format. The response comes back from the carrier and can be either in XML or JSON. If there is an error in the rating of a shipment it's normally contained in the response. </p>
+        <p>Once that information is gathered we will also need the SHIP JSON, request and response attached to the ticket. These come at the end of the RateShipment if this is a Rateshop there will be a large quantity of these. The request is sent from us to the carrier and is normally in an XML format. The response comes back from the carrier and can be either in XML or JSON. If there is an error in the rating of a shipment it's normally contained in the response. </p>
+        <p>Try importing the Shipment in the resources section, before importing make sure to clear out the OrderNumber field, source field, and set FromOrderEntry and IsBatchProcessed to false so you don't trigger new errors. Verify all needed fields are filled out and the address is correct. Verify the service is correct for the address, many times there is a specific cross border service the shipper needs to use such as UPS Standard.</p>
     </div>
     <aside class="sticky">
       <h2>Related Links</h2>
