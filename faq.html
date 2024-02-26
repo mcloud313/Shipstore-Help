@@ -53,6 +53,7 @@
         <p>If the issue is happening on load or saving the shipment back to the client's integration take the following steps. First check the Shipping history screen to see if the shipment has already been processed, this could be the cause of the error. Our next step should be to inspect the integration being used. You can do this by going to Administration > Integrations. Then opening up the integrations by selecting the edit button. We can then tell if the client is using the merchant app to load and save shipments to and from Shipstore.</p>
         <img class="screenshot" src="screenshots/integration.jpg" alt="Example of an Integration">
         <p>If the integration uses the Merchant app as the example above we need to request the merchant logs from the client to fully investigate. The Merchant logs are found at: 'C:\Logs\SHIPSTOREv4\Merchant'. If they are not utilizing the Merchant app then we will need to look into the server logs for more information as to what could be going wrong on shipment load or save.</p>
+        <p>If the shipper gets an error <strong>the sequence contains no elements</strong> this is due to not having a printer set for general shipping or all carriers. The system doesn't know how to route the label data and throws this error. Examine the station configuration and make sure they've a printer available for ALL carriers.</p>
         <h2>Rating</h2>
         <p>If the issue is happening when attempting to rate a shipment we'll need the following information.</p>
         <ul>
