@@ -12,6 +12,7 @@
     <nav class="nav collapsible">
         <button class="js-toggle">Menu</button>
         <ul class="nav-content">
+          <li><a href="batching.html">Batch Processing</a></li>
           <li><a href="faq.html">FAQs</a></li>
           <li><a href="businessrules.html">Business Rules</a></li>
           <li><a href="carriers.html">Carriers</a></li>
@@ -32,17 +33,23 @@
   </header>
   <main>
     <div class="content">
-      <h1>Shipstore Integrations</h1>
-      <p>Shipstore integrates with many WMS solutions, here I'll organize some common information and issues we have with them.</p>
+    <h1>Batch Processing</h1>
+    <p>Batch processing troubleshooting steps:</p>
+    <p>For issues troubleshooting batch processing it's helpful to see the actual statuses of the BatchRunEntries and the BatchRuns. There are times when the entries get confused within the system or the shippers are doing an innaccurate workflow. The Below query is an example for Bold Logistics that helps you see the the entries the shippers have submitted into the server.</p>
+    <pre>select Top 20 c.PlainText, Title, bp.CreatedBy, br.CreatedDate, bp.ID, * from BatchProcesses bp
+        join BatchRuns br on bp.Id = br.BatchProcess_Id
+        join Profiles p on p.Id = bp.Profile_Id
+        join Clients c on c.id = p.Client_Id
+        WHERE c.PlainText LIKE 'Bold%'
+        Order by br.CreatedDate desc</pre>
 
-      <h2>EPMS</h2>
-      <ul>
-        <li>EPMS Sends the Job number over in the {Department} field. </li>
-      </ul>
-      <h2>ERMS</h2>
-      <h2>RAMP</h2>
-      <h2>Veracore</h2>
-      </div>
+    <pre>
+        select Top 20 bp.id, c.PlainText, p.PlainText, bp.CreatedBy, Title,  bp.CreatedDate from BatchProcesses bp
+        join BatchRuns br on bp.Id = br.BatchProcess_Id
+        join Profiles p on p.Id = bp.Profile_Id
+        join Clients c on c.id = p.Client_Id
+        Order by bp.CreatedDate desc
+    </pre>
     <aside class="sticky">
       <h2>Related Links</h2>
       <ul>
