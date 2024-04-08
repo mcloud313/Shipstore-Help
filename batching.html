@@ -36,6 +36,9 @@
     <h1>Batch Processing</h1>
     <p>Batch processing troubleshooting steps:</p>
     <p>For issues troubleshooting batch processing it's helpful to see the actual statuses of the BatchRunEntries and the BatchRuns. There are times when the entries get confused within the system or the shippers are doing an innaccurate workflow. The Below query is an example for Bold Logistics that helps you see the the entries the shippers have submitted into the server.</p>
+
+    <p>When we see a task was cancelled this normally means the batch timed out. Have the shipper exit and restart the merchant app and refresh their brwosers.</p>
+    
     <pre>select Top 20 c.PlainText, Title, bp.CreatedBy, br.CreatedDate, bp.ID, * from BatchProcesses bp
         join BatchRuns br on bp.Id = br.BatchProcess_Id
         join Profiles p on p.Id = bp.Profile_Id
@@ -49,6 +52,17 @@
         join Profiles p on p.Id = bp.Profile_Id
         join Clients c on c.id = p.Client_Id
         Order by bp.CreatedDate desc
+    </pre>
+
+    <pre>
+        SELECT *
+        FROM BatchRunEntries bre
+        join batchruns br on bre.batchrun_id = br.id
+        join BatchProcesses bp on br.BatchProcess_Id = bp.Id
+        join batchentries be on be.batchprocess_id = bp.Id and be.Id = bre.Entry_Id
+        join Shipments s on s.BatchEntry_Id = be.Id
+        WHERE bp.Title = '0000018362' and bre.Status = 'Shipped'
+        Order By br.CreatedDate DESC
     </pre>
     <aside class="sticky">
       <h2>Related Links</h2>
